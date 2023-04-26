@@ -1,17 +1,16 @@
+import "dotenv/config";
 import express from "express";
-import dotenv from "dotenv";
+import cors from "cors";
 
-dotenv.config();
+import routes from "./routes/index.js";
 
 export default function app() {
   const app = express();
 
+  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-
-  app.get("/", (req, res) => {
-    res.json({ message: "Hello World" });
-  });
+  app.use("/user", routes.user);
 
   app.listen(process.env.BASE_PORT, () => {
     console.log(
