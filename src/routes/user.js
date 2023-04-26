@@ -1,10 +1,9 @@
 import { Router } from "express";
+import controller from "../controllers/index.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
-});
+router.get("/", controller.user);
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
