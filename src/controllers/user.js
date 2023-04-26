@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const user = (req, res) => {
-  axios
+const user = async (req, res) => {
+  await axios
     .get(process.env.API_URL, {
       params: {
         _limit: `${process.env.API_LIMIT}`,
